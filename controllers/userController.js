@@ -4,7 +4,7 @@ const User = require('../models/user');
 const { StatusCodes } = require('http-status-codes');
 const UserRepo = require('../repository/userRepository')
 exports.getUser = async(req, res)=>{ 
-  const  user = await UserRepo.getUser()
+  const  user =  UserRepo.getUser()
    res.json(user)
 }
 
@@ -19,4 +19,3 @@ exports.getUserById = async (req, res)=>{
 }
 
 
-exports

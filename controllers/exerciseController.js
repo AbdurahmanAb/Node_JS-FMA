@@ -5,16 +5,22 @@ const Exercise = require("../models/exercise");
 const User = require("../models/user");
 
 exports.getExercises = async (req, res)=>{
-    const exercise = await User.findAll();
+    const exercise = await Exercise.findAll();
     return res.json(exercise);
 }
+
 exports.getExerciseById = async (req, res)=>{
     const id= await req.params.id;
     const exercise = await Exercise.findOne({where:{id:id}});
 return res.json(exercise);
 }
+
 exports.addExercise = async (req ,res)=>{
+    const exercise = await ExerciseRepo.postExercise(req.body);
+return res.json(exercise)
+}
 
-
-    const exercise = await  ExerciseRepo.postExercise(req.body);
+exports.deleteExercise =async (req, res)=>{
+const deleted = await ExerciseRepo.delete(req.params.id);
+return res.json(deleted)
 }
