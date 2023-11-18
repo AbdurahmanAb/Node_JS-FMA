@@ -4,23 +4,31 @@ const User = require('../models/user');
 const { StatusCodes } = require('http-status-codes');
 const UserRepo = require('../repository/userRepository')
 exports.getUser = async(req, res)=>{ 
-  const  user =  UserRepo.getUser()
+  const  user = await UserRepo.getUser()
    res.json(user)
 }
 
 exports.getUserById = async (req, res)=>{
    respo =  req.params.id;
   user= await User.findOne ({where:{id:respo}})
- if(user){
+ 
     res.json(user)
- }
-    res.status(StatusCodes.NOT_FOUND);
+ 
  
 }
 
 
 exports.getUserExercise = async (req, res)=>{
    id = req.params.id;
-   const userExercise =UserRepo.getUserExercise(id);
-   return userExercise;
+   const userExercise = await UserRepo.getUserExercise(id);
+   return res.json(userExercise);
+}
+
+exports.addUserExercise = async (req, res)=>{
+   uid = req.params.id
+   eid = req.params.eid
+   enrolled = await UserRepo.enrollExercise(uid,eid);
+   return res.json(enrolled)
+
+
 }
