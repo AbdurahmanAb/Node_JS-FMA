@@ -1,42 +1,50 @@
 const Sequelize = require("sequelize");
-const UserMission = require("../models/user_mission");
-const sequelize = require("../utils/database");
-const Mission = require("./mission");
 
-const User = sequelize.define("user", {
+const sequelize = require("../utils/database");
+
+
+
+const Exercise = sequelize.define("exercise", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  email: {
-    type: Sequelize.STRING,
-  },
-  loginType: {
-    type: Sequelize.STRING,
-  },
+ 
   imageURL: {
     type: Sequelize.STRING,
   },
-  point: {
+  
+  Achievement_point: {
     type: Sequelize.DOUBLE,
     defaultValue: 0.0,
   },
-  nickName: {
+  Name: {
     type: Sequelize.STRING,
   },
-  gender: {
+  Duration: {
+    type:Sequelize.INTEGER,
+  },
+  Method_of_performing: {
     type: Sequelize.STRING,
   },
-  height: {
-    type: Sequelize.DOUBLE,
+  Pose_and_description: {
+    type: Sequelize.STRING,
   },
-  weight: {
-    type: Sequelize.DOUBLE,
+  videoUrl: {
+    type: Sequelize.STRING,
   },
+  Precaution: {
+    type: Sequelize.STRING,
+  },
+
+
+
+},  {
+  timestamps:true
 });
 
 
 
 
-module.exports = User;
+module.exports = Exercise;
