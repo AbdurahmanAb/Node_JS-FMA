@@ -24,3 +24,4 @@ exports.deleteExercise =async (req, res)=>{
 const deleted = await ExerciseRepo.delete(req.params.id);
 return res.json(deleted)
 }
+

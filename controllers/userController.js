@@ -19,3 +19,8 @@ exports.getUserById = async (req, res)=>{
 }
 
 
+exports.getUserExercise = async (req, res)=>{
+   id = req.params.id;
+   const userExercise =UserRepo.getUserExercise(id);
+   return userExercise;
+}

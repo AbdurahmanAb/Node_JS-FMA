@@ -23,6 +23,6 @@ exports.userLogin = async (req, res, next) => {
   } catch (error) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: "Failed to create user" });
+      .json({ error: error });
   }
 };
