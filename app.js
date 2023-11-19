@@ -21,6 +21,7 @@ const adminRoutes = require("./routes/adminRoute");
 const authRoutes = require("./routes/authRoute");
 const userRoutes = require("./routes/UserRoute");
 const exerciseRoute = require("./routes/exerciseRoute");
+const reportRoute = require("./routes/reportRoute")
 const Tag = require("./models/Tag");
 const Exercise_Tag = require("./models/execrise_tag");
 
@@ -34,6 +35,7 @@ app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/user/", authRoutes);
 app.use("/user/", userRoutes);
 app.use("/exercise/",exerciseRoute )
+app.use("/report/", reportRoute)
 
 //404 middleware
 app.use("*", (req, res, next) => {
@@ -61,10 +63,10 @@ Tag.belongsToMany(Exercise, {through:Exercise_Tag, foreignKey:"TagsID", onDelete
 onUpdate: 'CASCADE'})
 
 //USER EXERCISE
-User.belongsToMany(Exercise,{through:UserExercise, foreignKey:"User_ID", onDelete: 'CASCADE',
-onUpdate: 'CASCADE',})
-Exercise.belongsToMany(User,{through:UserExercise, foreignKey:"ExerciseID", onDelete: 'CASCADE',
-onUpdate: 'CASCADE'})
+// User.belongsToMany(Exercise,{through:UserExercise, foreignKey:"User_ID", onDelete: 'CASCADE',
+// onUpdate: 'CASCADE',})
+// Exercise.belongsToMany(User,{through:UserExercise, foreignKey:"ExerciseID", onDelete: 'CASCADE',
+// onUpdate: 'CASCADE'})
 
 
 

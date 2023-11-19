@@ -48,3 +48,12 @@ exports.validateExerciseRequest = withValidatorErrors([
 
 
 ]);
+exports.validateReport = withValidatorErrors([
+  body("point_Achieved").notEmpty().withMessage("point_Achieved Is required"),
+  body("performance").notEmpty().withMessage("performance is required"),
+ // body("duration").notEmpty().withMessage("duration  is required"),
+  body("weigh_lifted").notEmpty().withMessage("weigh_lifted is required"),
+  body("calorie_conversion_result").notEmpty().withMessage("calorie_conversion_result  is required"),
+  body("completion_status").notEmpty().withMessage("completion_status is required"),
+
+])   

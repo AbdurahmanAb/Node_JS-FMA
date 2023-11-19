@@ -52,7 +52,7 @@ exports.update = async(req)=>{
            videoUrl,
       Precaution} = req.body
     const exercise = await Exercise.findByPk(req.params.id)
-   Exercise.update(req.body) 
+   exercise.update(req.body) 
 
     return exercise;
   } catch (error) {

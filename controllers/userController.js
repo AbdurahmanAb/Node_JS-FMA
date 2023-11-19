@@ -9,8 +9,8 @@ exports.getUser = async(req, res)=>{
 }
 
 exports.getUserById = async (req, res)=>{
-   respo =  req.params.id;
-  user= await User.findOne ({where:{id:respo}})
+  const respo =  req.params.id;
+ const user= await User.findOne ({where:{id:respo}})
  
     res.json(user)
  

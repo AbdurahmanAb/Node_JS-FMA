@@ -11,8 +11,20 @@ const UserExercise = sequelize.define("UserExercise", {
     type: Sequelize.DOUBLE,
     defaultValue: 0.0,
   },
-   
-    Completion_status: {
+  performance:{
+    type:Sequelize.STRING
+  },
+  duration:{
+    type:Sequelize.STRING,
+    default:Date.now()
+  },weigh_lifted:{
+    type:Sequelize.DOUBLE,
+  
+  },
+  calorie_conversion_result:{
+    type:Sequelize.DOUBLE
+  },   
+    completion_status: {
         type: Sequelize.STRING,
       },
   },
