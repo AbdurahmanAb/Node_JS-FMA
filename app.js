@@ -24,6 +24,7 @@ const exerciseRoute = require("./routes/exerciseRoute");
 const reportRoute = require("./routes/reportRoute")
 const Tag = require("./models/Tag");
 const Exercise_Tag = require("./models/execrise_tag");
+const Attendance = require("./models/attendance")
 
 const User_Reward = require("./models/user_reward");
 

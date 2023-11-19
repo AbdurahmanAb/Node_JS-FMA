@@ -7,12 +7,16 @@ exports.sendReport = async (req, res)=>{
         User_ID = req.params.uid
         ExerciseID = req.params.eid
         
-        const report = await UserExercise.create({
-            User_ID,
-            ExerciseID,
+        const report = await UserExercise.update({
+           
             performance ,duration , weigh_lifted ,calorie_conversion_result, completion_status
+        },{
+            where:{
+                User_ID:User_ID,
+                ExerciseID:ExerciseID
+            }
         })
-        return res.status(StatusCodes.ACCEPTED).json(report);    
+        return res.status(StatusCodes.ACCEPTED).json("Reported Added");    
     } catch (error) {
        res.json(error) 
     }
