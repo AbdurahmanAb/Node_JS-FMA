@@ -65,6 +65,10 @@ User.belongsToMany(Exercise,{through:UserExercise, foreignKey:"User_ID", onDelet
 onUpdate: 'CASCADE',})
 Exercise.belongsToMany(User,{through:UserExercise, foreignKey:"ExerciseID", onDelete: 'CASCADE',
 onUpdate: 'CASCADE'})
+
+
+
+
 User.hasOne(Reward,{through:User_Reward, foreignKey:"User_ID", onDelete: 'CASCADE',
 onUpdate: 'CASCADE'});
 Reward.belongsTo(User, {through:User_Reward, foreignKey:"RewardID", onDelete: 'CASCADE',

@@ -25,3 +25,15 @@ const deleted = await ExerciseRepo.delete(req.params.id);
 return res.json(deleted)
 }
 
+exports.updateExercise = async (req, res)=>{
+    try {
+        const updated = await ExerciseRepo.update(req);
+
+        return res.json(updated)
+
+    } catch (error) {
+        console.log(error)
+    }
+   
+
+}

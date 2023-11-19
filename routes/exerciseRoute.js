@@ -1,5 +1,5 @@
 // const express = require("express");
-const { getExercises, getExerciseById, addExercise, deleteExercise } = require("../controllers/exerciseController");
+const { getExercises, getExerciseById, addExercise, deleteExercise, updateExercise } = require("../controllers/exerciseController");
 
 // const router = express.Router()
 
@@ -23,6 +23,7 @@ router.get('/:id',getExerciseById);
 
 router.post('/', validateExerciseRequest, addExercise)
 router.delete('/:id', deleteExercise)
+router.patch('/:id',updateExercise)
 
 
 

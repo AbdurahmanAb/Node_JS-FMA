@@ -4,6 +4,7 @@ const User = require('../models/user');
 const { StatusCodes } = require('http-status-codes');
 const UserExercise = require('../models/user_exercise');
 const { where } = require('sequelize');
+const Exercise = require('../models/exercise');
 
 exports.getUser = async ()=>{
     console.log("hello")
@@ -13,7 +14,14 @@ return users;
 
 
 exports.getUserExercise =async (id)=>{
-const user_exercise = await UserExercise.findAll({where:{User_ID:id}})
+const user_exercise =await User.findOne({
+ where:{id},
+ include:{
+model:Exercise,
+through:UserExercise
+ }
+
+});
 return user_exercise;
 }
 

@@ -39,3 +39,24 @@ exports.delete = async (id)=>{
    return exercise.destroy()
 
 }
+
+exports.update = async(req)=>{
+  try {
+    const {  Name,
+      imageURL,
+      
+      Achievement_point,
+      Duration,
+      Method_of_performing,
+      Pose_and_description,
+           videoUrl,
+      Precaution} = req.body
+    const exercise = await Exercise.findByPk(req.params.id)
+   Exercise.update(req.body) 
+
+    return exercise;
+  } catch (error) {
+    console.log(error)
+  }
+ 
+}
