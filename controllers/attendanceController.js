@@ -5,12 +5,9 @@ const id = req.params.id
 
 const attendance = Attendance.findOne({where:{userId:id}}) 
 if(!attendance){
-    const attended = Attendance.create({
-
-    })
+     
+    const attended = Attendance.create(req.body)
 }
-const attended = Attendance.update({
-
-})
+const attended = Attendance.update(req.body)
 
 }
