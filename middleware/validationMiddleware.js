@@ -67,3 +67,13 @@ exports.validatePopup = withValidatorErrors([
   body("title").notEmpty().withMessage("pop up Title Is Required"),
   body("content").notEmpty().withMessage("content IS Required")
 ])
+
+exports.validateMisiion = withValidatorErrors([
+  body("name").notEmpty().withMessage("name is Required"),
+  body("duration").notEmpty().withMessage("Duration is required"),
+  body("mission_detail").notEmpty().withMessage("mission_detail is required"),
+  body("achievement_point").notEmpty().withMessage("achievement_point is required"),
+  body("mission_guide").notEmpty().withMessage("mission_guide is required")
+
+])
+ 
