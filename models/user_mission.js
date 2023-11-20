@@ -14,6 +14,10 @@ const UserMission = sequelize.define("UserMission", {
     completion_status: {
         type: Sequelize.STRING,
       },
+      consecutiveDaysAttended:{
+        type:Sequelize.INTEGER,
+        defaultValue:0
+      }
   },
 
   

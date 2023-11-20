@@ -3,7 +3,7 @@ const { setAttendance } = require("../controllers/attendanceController");
 const { validateAttendance } = require("../middleware/validationMiddleware");
 const router = express.Router()
 
-router.post("/:id",validateAttendance,setAttendance);
+router.post("/:id/:mid/",validateAttendance,setAttendance);
 
 
 module.exports = router

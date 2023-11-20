@@ -1,0 +1,22 @@
+ Press the "exercise complete" button in the red box to store "exercise time", "weight sum", and "calorie" information calculated by the app in the server DB.
+
+3. There are four missions in total.
+
+1) Attendance check: Check attendance days by calculating the number of days accessed to the app according to login per account
+2) Total Exercise Time: Check if 'Exercise Time' recorded by the app reaches a certain value
+3) Achieving Total Weight: Checks whether a particular value is reached by adding up all the 'weights' recorded in the app
+4) Achieving Total Calories: Checks whether a certain value is reached by adding up all the 'calories' recorded by the app
+
+4. There is no change in the four missions, and all are stored on the server. However, you can change the achievement conditions on the Administrator Web.
+
+1) EX) Change attendance check to 5 days → 10 days
+2) EX) Total exercise time 2 hours → 5 hours, etc
+
+5. When you access the 'Mission' tab in the app, the 'Mission List' is called.
+When invoking the 'mission list', bring up all the details of the mission.(including administrator web settings)
+Update status values for each account for missions/non-performance/performance.
+
+6. Points will be paid when 'mission conditions' are achieved in 'Mission' 'Performing' state.
+- Each account is updating "exercise time", "weight", and "calorie" information at each point of completion of exercise, so when the mission value set is reached, the account status must be changed to "mission complete".
+
+If you have any more questions, please feel free to ask.

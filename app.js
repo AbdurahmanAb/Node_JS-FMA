@@ -5,10 +5,10 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const User = require('./models/user')
 const Exercise = require('./models/exercise')
-const Reward  = require('./models/reward')
+const Reward  = require('./models/user_reward')
 const UserExercise = require('./models/user_exercise')
 const Mission = require('./models/mission');
-const User_Reward = require("./models/user_reward");
+// const User_Reward = require("./models/user_reward");
 const Popup = require("./models/popUp")
 const Tag = require("./models/Tag");
 const Exercise_Tag = require("./models/execrise_tag");
@@ -78,10 +78,10 @@ onUpdate: 'CASCADE'})
 
 
 
-User.hasOne(Reward,{through:User_Reward, foreignKey:"User_ID", onDelete: 'CASCADE',
-onUpdate: 'CASCADE'});
-Reward.belongsTo(User, {through:User_Reward, foreignKey:"RewardID", onDelete: 'CASCADE',
-onUpdate: 'CASCADE'})
+// User.hasOne(Reward,{through:User_Reward, foreignKey:"User_ID", onDelete: 'CASCADE',
+// onUpdate: 'CASCADE'});
+// Reward.belongsTo(User, {through:User_Reward, foreignKey:"RewardID", onDelete: 'CASCADE',
+// onUpdate: 'CASCADE'})
 
 sequelize
   .sync()

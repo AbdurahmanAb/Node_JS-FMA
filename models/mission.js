@@ -15,22 +15,23 @@ const Mission = sequelize.define("mission", {
   imageURL: {
     type: Sequelize.STRING,
   },
-  point: {
-    type: Sequelize.DOUBLE,
-    defaultValue: 0.0,
-  },
-  Name: {
+ 
+  name: {
     type: Sequelize.STRING,
   },
-  Duration: {
+  duration: {
     type:Sequelize.INTEGER,
   },
-  Detail: {
+  mission_detail: {
     type: Sequelize.STRING,
   },
-  Guide: {
+  achievement_point:{
+    type:Sequelize.DOUBLE
+  },
+  mission_guide: {
     type: Sequelize.STRING,
   },
+  
 });
 
 
