@@ -23,3 +23,5 @@ type:Sequelize.STRING
     timestamps:true
 }
 )
+
+module.exports = Popup;

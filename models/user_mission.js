@@ -8,10 +8,10 @@ const UserMission = sequelize.define("UserMission", {
 
   point_Achieved: {
     type: Sequelize.DOUBLE,
-    defaultValue: 0.0,
+    defaultValue: 5.0,
   },
 
-    Completion_status: {
+    completion_status: {
         type: Sequelize.STRING,
       },
   },

@@ -8,6 +8,11 @@ const Exercise = require('./models/exercise')
 const Reward  = require('./models/reward')
 const UserExercise = require('./models/user_exercise')
 const Mission = require('./models/mission');
+const User_Reward = require("./models/user_reward");
+const Popup = require("./models/popUp")
+const Tag = require("./models/Tag");
+const Exercise_Tag = require("./models/execrise_tag");
+const Attendance = require("./models/attendance")
 const UserMission = require('./models/user_mission')
 const sequelize = require("./utils/database");
 
@@ -22,11 +27,10 @@ const authRoutes = require("./routes/authRoute");
 const userRoutes = require("./routes/UserRoute");
 const exerciseRoute = require("./routes/exerciseRoute");
 const reportRoute = require("./routes/reportRoute")
-const Tag = require("./models/Tag");
-const Exercise_Tag = require("./models/execrise_tag");
-const Attendance = require("./models/attendance")
+const popUpROute = require("./routes/popUp")
+const attendanceRoute = require("./routes/attendanceRoute")
 
-const User_Reward = require("./models/user_reward");
+
 
 app.get("/", (req, res, next) => {
   res.json({ message: "Hi, welcome" });
@@ -37,6 +41,8 @@ app.use("/api/v1/user/", authRoutes);
 app.use("/user/", userRoutes);
 app.use("/exercise/",exerciseRoute )
 app.use("/report/", reportRoute)
+app.use("/attend/", attendanceRoute)
+app.use("/popup/", popUpROute)
 
 //404 middleware
 app.use("*", (req, res, next) => {

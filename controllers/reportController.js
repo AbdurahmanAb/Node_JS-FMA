@@ -1,22 +1,36 @@
 const { StatusCodes } = require("http-status-codes")
 const UserExercise = require("../models/user_exercise")
 
+
 exports.sendReport = async (req, res)=>{
     try {
         const {point_Achieved, performance, duration  ,weigh_lifted, calorie_conversion_result, completion_status} =  req.body
-        User_ID = req.params.uid
-        ExerciseID = req.params.eid
+      const  User_ID = req.params.uid
+      const  ExerciseID = req.params.eid
         
-        const report = await UserExercise.update({
-           
-            performance ,duration , weigh_lifted ,calorie_conversion_result, completion_status,point_Achieved
-        },{
+     const   isExist = await UserExercise.findOne({
+        attributes:["point_Achieved"],
             where:{
                 User_ID:User_ID,
                 ExerciseID:ExerciseID
             }
         })
-        return res.status(StatusCodes.ACCEPTED).json("Reported Added");    
+    
+        if(isExist){
+            const report = await UserExercise.update({
+           
+                performance ,duration , weigh_lifted ,calorie_conversion_result, completion_status,point_Achieved:point_Achieved + isExist.point_Achieved
+            },{
+                where:{
+                    User_ID:User_ID,
+                    ExerciseID:ExerciseID
+                }
+            })
+            return res.status(StatusCodes.ACCEPTED).json({"updated":report}); 
+        }
+       
+       
+          
     } catch (error) {
        res.json(error) 
     }

@@ -57,3 +57,13 @@ exports.validateReport = withValidatorErrors([
   body("completion_status").notEmpty().withMessage("completion_status is required"),
 
 ])   
+
+exports.validateAttendance = withValidatorErrors([
+  body("is_present").notEmpty().withMessage("is_present is required"),
+  
+])
+
+exports.validatePopup = withValidatorErrors([
+  body("title").notEmpty().withMessage("pop up Title Is Required"),
+  body("content").notEmpty().withMessage("content IS Required")
+])

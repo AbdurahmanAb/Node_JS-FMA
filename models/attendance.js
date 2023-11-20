@@ -10,7 +10,8 @@ is_present:{
     allowNull:false
 },
 attendance_date:{
-    type:Sequelize.DATE,
+    type:Sequelize.STRING,
+    unique:true,
     allowNull:false
 }
 }

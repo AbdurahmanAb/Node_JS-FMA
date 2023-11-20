@@ -9,7 +9,7 @@ const UserExercise = sequelize.define("UserExercise", {
 
   point_Achieved: {
     type: Sequelize.DOUBLE,
-    defaultValue: 0.0,
+    defaultValue: 5.0,
   },
   performance:{
     type:Sequelize.STRING
