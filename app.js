@@ -10,8 +10,7 @@ const UserExercise = require('./models/user_exercise')
 const Mission = require('./models/mission');
 // const User_Reward = require("./models/user_reward");
 const Popup = require("./models/popUp")
-const Tag = require("./models/Tag");
-const Exercise_Tag = require("./models/execrise_tag");
+const Inquiry = require("./models/ Inquiry")
 const Attendance = require("./models/attendance")
 const UserMission = require('./models/user_mission')
 const sequelize = require("./utils/database");
@@ -74,10 +73,10 @@ Mission.belongsToMany(User, {
   onUpdate: 'CASCADE',
 })
 //EXERCISE TAG
-Exercise.belongsToMany(Tag,{through:Exercise_Tag, foreignKey:"Exercise_ID", onDelete: 'CASCADE',
-onUpdate: 'CASCADE'});
-Tag.belongsToMany(Exercise, {through:Exercise_Tag, foreignKey:"TagsID", onDelete: 'CASCADE',
-onUpdate: 'CASCADE'})
+// Exercise.belongsToMany(Tag,{through:Exercise_Tag, foreignKey:"Exercise_ID", onDelete: 'CASCADE',
+// onUpdate: 'CASCADE'});
+// Tag.belongsToMany(Exercise, {through:Exercise_Tag, foreignKey:"TagsID", onDelete: 'CASCADE',
+// onUpdate: 'CASCADE'})
 
 //USER EXERCISE
 // User.belongsToMany(Exercise,{through:UserExercise, foreignKey:"User_ID", onDelete: 'CASCADE',

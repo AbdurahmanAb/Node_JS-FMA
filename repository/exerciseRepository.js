@@ -1,30 +1,35 @@
 const Exercise = require("../models/exercise");
 
 exports.postExercise = async (request)=>{
-    const {  Name,
+    const {  name,
         imageURL,
         
-        Achievement_point,
-        Duration,
-        Method_of_performing,
-        Pose_and_description,
-             videoUrl,
-        Precaution} = request
+        detail_information,
+      
+        method_of_performing,
+        pose_and_description,
+             internal_videoUrl,
+             external_video_url,
+        precaution, tags} = request
+    
     try {
         // console.log("response is", request)
         // Create a new user
        
         const newExercise = await Exercise.create({
      
-          Name,
+          name,
           imageURL,
           
-          Achievement_point,
-          Duration,
-          Method_of_performing,
-          Pose_and_description,
-               videoUrl,
-          Precaution,
+          detail_information,
+        
+          method_of_performing,
+          pose_and_description,
+               internal_videoUrl,
+               external_video_url,
+          precaution,
+              tags: tags.join(',')
+          
         });
     
       return newExercise;

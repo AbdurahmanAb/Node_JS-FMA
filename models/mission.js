@@ -30,8 +30,10 @@ const Mission = sequelize.define("mission", {
   },
   mission_guide: {
     type: Sequelize.STRING,
-  },
-  
+  }
+},
+{
+  timestamps:false
 });
 
 

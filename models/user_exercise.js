@@ -7,25 +7,17 @@ const Exercise = require("../models/exercise")
 const UserExercise = sequelize.define("UserExercise", {
 
 
-  point_Achieved: {
-    type: Sequelize.DOUBLE,
-    defaultValue: 5.0,
-  },
+ 
   performance:{
     type:Sequelize.STRING
   },
-  duration:{
-    type:Sequelize.STRING,
-    default:Date.now()
-  },weigh_lifted:{
+weigh_lifted:{
     type:Sequelize.DOUBLE,
   
   },
-  calorie_conversion_result:{
-    type:Sequelize.DOUBLE
-  },   
-    completion_status: {
-        type: Sequelize.STRING,
+  
+    is_supported: {
+        type: Sequelize.BOOLEAN,
       },
   },
 

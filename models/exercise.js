@@ -15,28 +15,32 @@ const Exercise = sequelize.define("exercise", {
     type: Sequelize.STRING,
   },
   
-  Achievement_point: {
-    type: Sequelize.DOUBLE,
+  detailed_information: {
+    type: Sequelize.STRING,
     defaultValue: 0.0,
   },
-  Name: {
+  name: {
     type: Sequelize.STRING,
   },
-  Duration: {
-    type:Sequelize.INTEGER,
-  },
-  Method_of_performing: {
+
+  method_of_performing: {
     type: Sequelize.STRING,
   },
-  Pose_and_description: {
+  pose_and_description: {
     type: Sequelize.STRING,
   },
-  videoUrl: {
+  internal_videoUrl: {
     type: Sequelize.STRING,
   },
-  Precaution: {
+  external_video_url:{
+    type:Sequelize.STRING
+  },
+  precaution: {
     type: Sequelize.STRING,
   },
+  tags:{
+    type:Sequelize.STRING
+  }
 
 
 

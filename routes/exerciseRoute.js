@@ -21,7 +21,7 @@ router.get('/',getExercises);
 router.get('/:id',getExerciseById);
 
 
-router.post('/', validateExerciseRequest, addExercise)
+router.post('/add/', validateExerciseRequest, addExercise)
 router.delete('/:id', deleteExercise)
 router.patch('/:id',updateExercise)
 
