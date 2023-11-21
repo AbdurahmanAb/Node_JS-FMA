@@ -1,9 +1,11 @@
 const express = require("express")
-const { setAttendance } = require("../controllers/attendanceController");
+const { setAttendance, Attend } = require("../controllers/attendanceController");
 const { validateAttendance } = require("../middleware/validationMiddleware");
 const router = express.Router()
 
-router.post("/:id/:mid/",validateAttendance,setAttendance);
+
+router.post("/:id",validateAttendance, Attend)
+router.post("/:id/:mid/",setAttendance);
 
 
 module.exports = router
