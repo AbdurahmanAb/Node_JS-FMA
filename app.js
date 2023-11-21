@@ -29,7 +29,7 @@ const exerciseRoute = require("./routes/exerciseRoute");
 const reportRoute = require("./routes/reportRoute")
 const popUpROute = require("./routes/popUp")
 const attendanceRoute = require("./routes/attendanceRoute")
-
+const missionRoute = require("./routes/missionRoute")
 
 
 app.get("/", (req, res, next) => {
@@ -43,6 +43,7 @@ app.use("/exercise/",exerciseRoute )
 app.use("/report/", reportRoute)
 app.use("/attend/", attendanceRoute)
 app.use("/popup/", popUpROute)
+app.use("/mission/", missionRoute)
 
 //404 middleware
 app.use("*", (req, res, next) => {
@@ -58,11 +59,20 @@ app.use((error, req, res, next) => {
 });
 
 //USER MISSION 
-User.belongsToMany(Mission,{through:UserMission, foreignKey:"Mission_ID", onDelete: 'CASCADE',
-onUpdate: 'CASCADE',})
-Mission.belongsToMany(User,{through:UserMission, foreignKey:"UserID", onDelete: 'CASCADE',
-onUpdate: 'CASCADE'})
 
+User.belongsToMany(Mission, {
+  through: UserMission,
+  foreignKey: "UserID",
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+});
+
+Mission.belongsToMany(User, {
+  through: UserMission,
+  foreignKey: "Mission_ID",
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+})
 //EXERCISE TAG
 Exercise.belongsToMany(Tag,{through:Exercise_Tag, foreignKey:"Exercise_ID", onDelete: 'CASCADE',
 onUpdate: 'CASCADE'});

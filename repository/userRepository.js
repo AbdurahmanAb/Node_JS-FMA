@@ -7,7 +7,7 @@ const { where } = require('sequelize');
 const Exercise = require('../models/exercise');
 
 exports.getUser = async ()=>{
-    console.log("hello")
+ 
     const users = await User.findAll();
 return users;
 }
@@ -27,6 +27,7 @@ return user_exercise;
 
 
 exports.enrollExercise = async (uid, eid)=>{
+    
     try{
  const enrolled = await UserExercise.create({
 User_ID:uid,
@@ -36,6 +37,6 @@ ExerciseID:eid
  return enrolled;
     }catch(err){
         return err;
-        console.log(err)
+       
     }
 }

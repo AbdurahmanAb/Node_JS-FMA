@@ -2,7 +2,9 @@ const { restart } = require('nodemon');
 const User = require('../models/user');
 
 const { StatusCodes } = require('http-status-codes');
-const UserRepo = require('../repository/userRepository')
+const UserRepo = require('../repository/userRepository');
+const UserMission = require('../models/user_mission');
+const Mission = require('../models/mission');
 exports.getUser = async(req, res)=>{ 
   const  user = await UserRepo.getUser()
    res.json(user)
@@ -31,4 +33,44 @@ exports.addUserExercise = async (req, res)=>{
    return res.json(enrolled)
 
 
+}
+
+//User Mission// Assuming you have a model named UserMission
+
+
+exports.addUserMission = async (req, res) => {
+  const uid = req.params.uid;
+  const mid = req.params.mid;
+console.log("mid = ",mid)
+console.log("uid = ", uid)
+  try {
+    // Check if the user and mission exist before enrollment
+    // Add the necessary conditions based on your table structures
+    const userExists = User.findOne({where:{id:uid}}) /* Check if user with uid exists */;
+    const missionExists = Mission.findOne({where:{id:mid}})/* Check if mission with mid exists */;
+
+    if (!userExists || !missionExists) {
+      return res.status(404).json({ error: 'User or Mission not found' });
+    }
+
+    const enrollment = await UserMission.create({
+      UserID: uid,
+      Mission_ID: mid,
+    });
+
+    return res.status(201).json(enrollment);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+exports.getUserMission = async(req, res)=>{
+   const id = req.params.id
+  const userMission = await User.findOne({where:{id},include:{
+    model:Mission,
+   through:UserMission
+  }})
+  return res.json(userMission)
 }
