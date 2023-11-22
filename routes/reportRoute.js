@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get('/:uid/:eid/',get_report)
 
-router.post('/:uid/:eid/',validateReport,sendReport)
+router.post('/:id/:eid/',validateReport,sendReport)
 
 module.exports = router;

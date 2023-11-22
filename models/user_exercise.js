@@ -8,12 +8,14 @@ const UserExercise = sequelize.define("UserExercise", {
 
 
  id:{
-  type:Sequelize.INTEGER,
-  primaryKey:true
 
+  type: Sequelize.INTEGER,
+  primaryKey: true,
+  autoIncrement: true,
  },
  performance: {
   type: Sequelize.ENUM('STANDARD', 'ECCENTRIC', 'CONCENTRIC'),
+  defaultValue:'STANDARD',
   allowNull: false,
 },
 weigh_lifted:{

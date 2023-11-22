@@ -5,6 +5,7 @@ const { StatusCodes } = require('http-status-codes');
 const UserRepo = require('../repository/userRepository');
 const UserMission = require('../models/user_mission');
 const Mission = require('../models/mission');
+
 exports.getUser = async(req, res)=>{ 
   const  user = await UserRepo.getUser()
    res.json(user)

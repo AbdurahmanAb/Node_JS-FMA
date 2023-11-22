@@ -19,5 +19,5 @@ const SetExercises = sequelize.define('SetExercises', {
   module.exports= SetExercises
 
 
-UserExercise.hasMany(SetExercises, { foreignKey: 'exercise_id' });
+UserExercise.hasMany(SetExercises, { foreignKey: 'userExerciseId' });
 SetExercises.belongsTo(UserExercise, { foreignKey: 'set_id' });

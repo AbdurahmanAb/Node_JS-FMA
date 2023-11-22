@@ -17,7 +17,7 @@ exports.Attend = async(req, res)=>{
   }
  
   
-  return  attended
+  return  res.json(attended)
 }
 exports.setAttendance = async (req, res)=>{
    const userId = req.params.id
