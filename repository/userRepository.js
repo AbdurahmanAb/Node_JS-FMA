@@ -18,7 +18,7 @@ exports.getUserExercise =async (id)=>{
     try {
         // Retrieve all UserExercises records with their associated SetExercises and OneExercises
         const userExercises = await UserExercise.findAll({
-            where:{id},
+            where:{User_ID:id},
           include: [
             {
               model: SetExercises,

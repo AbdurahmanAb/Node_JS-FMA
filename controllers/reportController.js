@@ -7,18 +7,25 @@ const OneExercises = require("../models/one_exercise")
 exports.sendReport = async (req, res)=>{
 //User Exercise ID
 const id = req.params.id;
+const eid = req.params.eid;
     try {
         // Extract data from the request body
-        const { performance, weight_lifted, isSupported, set_exercises } = req.body;
+        const { performance, weigh_lifted, isSupported, set_exercises } = req.body;
     
         // Create a new UserExercises record
         const userExercises = await UserExercises.update({
           performance,
-          weight_lifted,
+          weigh_lifted,
           isSupported,
+         
         },{where:{
-            id:id
-        }});
+            User_ID:id,
+            ExerciseID:eid
+        },
+        });
+        const userE = await UserExercises.findOne({where:{   User_ID:id,
+          ExerciseID:eid}})
+        console.log("Id is" ,userE.id)
     
         // Create SetExercises and OneExercises records for each set and exercise
         for (const set of set_exercises) {
@@ -26,17 +33,22 @@ const id = req.params.id;
     
           const setExercises = await SetExercises.create({
             set_cnt,
-            userExercisesId: userExercises.id, // Assign the foreign key
+            userExerciseId: userE.id,
+            // Assign the foreign key
           });
-    
-          for (const oneExercise of one_exercises) {
-            const { duration, distance, calories } = oneExercise;
+          const setE = await SetExercises.findOne({where:{   userExerciseId: userE.id
+          }})
+          console.log("Id is" ,setE.id)
+        //  const setExercises01 = await SetExercises.findOne({where: {id: }})
+
+          for (const oneExercises of one_exercises) {
+            const { duration, distance, calories } = oneExercises;
     
             await OneExercises.create({
               duration,
               distance,
               calories,
-              set_id: setExercises.id, // Assign the foreign key
+              set_id: setE.set_id, // Assign the foreign key
             });
           }
         }
@@ -85,11 +97,19 @@ exports.get_report = async (req, res)=>{
  const uid = req.params.uid
  const eid = req.params.eid
  try {
-    report = await UserExercise.findOne({
+    report = await UserExercises.findOne({
         where:{
             User_ID:uid,
             ExerciseID:eid
-        }
+        },
+        include: [
+          {
+            model: SetExercises,
+            include: {
+              model: OneExercises,
+            },
+          },
+        ],
     })
 
     return res.json(report);
