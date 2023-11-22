@@ -1,4 +1,4 @@
-const { Inquiry } = require("../models/Inquiry");
+const { Inquiry, Answer } = require("../models/Inquiry");
 const User = require('../models/user');
 
 const { StatusCodes } = require('http-status-codes');
@@ -99,5 +99,12 @@ exports.askQuestion = async (req, res)=>{
 //GET Answer
 exports.getAnswer = async (req, res)=>{
   uid = req.params.id
+  const answer = await Inquiry.findOne({
+    where:{userId:uid},
+    include:{
+      model:Answer
+    }
+  })
+  res.json(answer)
   
 }

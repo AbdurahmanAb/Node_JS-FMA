@@ -1,5 +1,5 @@
 // const express = require("express");
-const { getUser, getUserById, getUserExercise, addUserExercise, addUserMission, getUserMission, askQuestion } = require("../controllers/userController");
+const { getUser, getUserById, getUserExercise, addUserExercise, addUserMission, getUserMission, askQuestion, getAnswer } = require("../controllers/userController");
 
 // const router = express.Router()
 
@@ -33,7 +33,7 @@ router.post('/:uid/mission/:mid', addUserMission)
 //Inquiry
 router.post("/:uid/ask", validateInquiry,askQuestion)
 
-router.get("/:id/answer", )
+router.get("/:id/answer", getAnswer)
 
 
 
