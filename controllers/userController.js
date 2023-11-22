@@ -1,4 +1,4 @@
-const { restart } = require('nodemon');
+const { Inquiry } = require("../models/Inquiry");
 const User = require('../models/user');
 
 const { StatusCodes } = require('http-status-codes');
@@ -73,4 +73,24 @@ exports.getUserMission = async(req, res)=>{
    through:UserMission
   }})
   return res.json(userMission)
+}
+
+//ASK QUESTION 
+exports.askQuestion = async (req, res)=>{
+  uid = req.params.uid;
+
+  try {
+      const question = await Inquiry.create({
+          question:req.body.question,
+          userId:uid,
+          status:"Waiting for Answer"
+
+
+      })
+
+      return res.json(question);
+  } catch (error) {
+      
+  }
+
 }

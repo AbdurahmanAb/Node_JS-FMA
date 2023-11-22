@@ -76,4 +76,10 @@ exports.validateMission = withValidatorErrors([
   body("mission_guide").notEmpty().withMessage("mission_guide is required")
 
 ])
- 
+ exports.validateInquiry = withValidatorErrors([
+  body("question").notEmpty().withMessage("question field Cannot be Empty")
+ ])
+
+ exports.validateAnswer = withValidatorErrors([
+  body("answer").notEmpty().withMessage("answer is Required")
+ ])

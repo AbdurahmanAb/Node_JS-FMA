@@ -10,7 +10,7 @@ const UserExercise = require('./models/user_exercise')
 const Mission = require('./models/mission');
 // const User_Reward = require("./models/user_reward");
 const Popup = require("./models/popUp")
-const Inquiry = require("./models/ Inquiry")
+const Inquiry = require("./models/Inquiry")
 const Attendance = require("./models/attendance")
 const UserMission = require('./models/user_mission')
 const sequelize = require("./utils/database");
@@ -29,6 +29,7 @@ const reportRoute = require("./routes/reportRoute")
 const popUpROute = require("./routes/popUp")
 const attendanceRoute = require("./routes/attendanceRoute")
 const missionRoute = require("./routes/missionRoute")
+const inquiryRoute = require("./routes/InquiryRoute")
 
 
 app.get("/", (req, res, next) => {
@@ -43,6 +44,7 @@ app.use("/report/", reportRoute)
 app.use("/attend/", attendanceRoute)
 app.use("/popup/", popUpROute)
 app.use("/mission/", missionRoute)
+app.use("/inquiry/", inquiryRoute)
 
 //404 middleware
 app.use("*", (req, res, next) => {
