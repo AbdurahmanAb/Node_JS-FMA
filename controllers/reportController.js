@@ -10,13 +10,14 @@ const id = req.params.id;
 const eid = req.params.eid;
     try {
         // Extract data from the request body
-        const { performance, weigh_lifted, isSupported, set_exercises } = req.body;
+        const { performance, weigh_lifted, is_supported, set_exercises ,completion_status} = req.body;
     
         // Create a new UserExercises record
         const userExercises = await UserExercises.update({
           performance,
           weigh_lifted,
-          isSupported,
+          is_supported,
+          completion_status
          
         },{where:{
             User_ID:id,
@@ -30,27 +31,39 @@ const eid = req.params.eid;
         // Create SetExercises and OneExercises records for each set and exercise
         for (const set of set_exercises) {
           const { set_cnt, one_exercises } = set;
-    
+          const isExist = await SetExercises.findOne({where:{ userExerciseId: userE.id}})
+        if(!isExist){
           const setExercises = await SetExercises.create({
             set_cnt,
             userExerciseId: userE.id,
             // Assign the foreign key
           });
+        }
+        // const setExercises = await SetExercises.update({
+        //   set_cnt,
+        //   userExerciseId: userE.id,
+        //   // Assign the foreign key
+        // });
+         
+          
           const setE = await SetExercises.findOne({where:{   userExerciseId: userE.id
           }})
-          console.log("Id is" ,setE.id)
+          console.log("Result is" ,setE)
         //  const setExercises01 = await SetExercises.findOne({where: {id: }})
+        const isExistOne = await OneExercises.findOne({where:{ set_id: setE.set_id}})
+        if(!isExistOne){
+for (const oneExercises of one_exercises) {
+  const { duration, distance, calories } = oneExercises;
 
-          for (const oneExercises of one_exercises) {
-            const { duration, distance, calories } = oneExercises;
-    
-            await OneExercises.create({
-              duration,
-              distance,
-              calories,
-              set_id: setE.set_id, // Assign the foreign key
-            });
-          }
+  await OneExercises.create({
+    duration,
+    distance,
+    calories,
+    set_id: setE.set_id, // Assign the foreign key
+  });
+}
+        }
+          
         }
     
         res.status(201).json({ message: 'Data added successfully' });
