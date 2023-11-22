@@ -7,22 +7,33 @@ const Exercise = require("../models/exercise")
 const UserExercise = sequelize.define("UserExercise", {
 
 
- 
-  performance:{
-    type:Sequelize.STRING
-  },
+ id:{
+  type:Sequelize.INTEGER,
+  primaryKey:true
+
+ },
+ performance: {
+  type: Sequelize.ENUM('STANDARD', 'ECCENTRIC', 'CONCENTRIC'),
+  allowNull: false,
+},
 weigh_lifted:{
     type:Sequelize.DOUBLE,
   
+  },
+  completion_status:{
+type:Sequelize.STRING
   },
   
     is_supported: {
         type: Sequelize.BOOLEAN,
       },
   },
-
+  {
+    timestamps:false
+  }
   
 );
+
 User.belongsToMany(Exercise, {
   through: UserExercise,
   foreignKey: 'User_ID',
@@ -35,6 +46,7 @@ Exercise.belongsToMany(User, {
   foreignKey: 'ExerciseID',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
-});
+}
+);
 
 module.exports = UserExercise;

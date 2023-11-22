@@ -94,3 +94,9 @@ exports.askQuestion = async (req, res)=>{
   }
 
 }
+
+//GET Answer
+exports.getAnswer = async (req, res)=>{
+  uid = req.params.id
+  
+}
