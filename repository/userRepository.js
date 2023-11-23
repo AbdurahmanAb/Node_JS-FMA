@@ -52,7 +52,7 @@ exports.getUserExercise =async (id)=>{
 //   ]
 
 // });
-return user_exercise;
+
 }
 
 
@@ -64,9 +64,15 @@ User_ID:uid,
 ExerciseID:eid
 
  })
- return enrolled.id;
+ const isExist =await Exercise.findOne({where:{id:eid}})
+const updateCOunt =await Exercise.update({
+  userCount:isExist.userCount+ 1
+},{where:{id:eid}})
+console.log("update Count",updateCOunt)
+ return enrolled;
     }catch(err){
         return err;
        
     }
-}
+
+  }

@@ -40,6 +40,10 @@ const Exercise = sequelize.define("exercise", {
   },
   tags:{
     type:Sequelize.STRING
+  },
+  userCount:{
+    type:Sequelize.INTEGER,
+    defaultValue:0
   }
 
 

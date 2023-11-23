@@ -37,14 +37,14 @@ exports.validateUserLogin = withValidatorErrors([
 ]);
 
 exports.validateExerciseRequest = withValidatorErrors([
-  body("name").notEmpty().withMessage("A valid Name is required"),
+  body("name").notEmpty().withMessage("A valid name is required"),
 body("tags").notEmpty().withMessage("at least one tag required"),
 
 body("detailed_information").notEmpty().withMessage("detailed_information is required"),
-  body("pose_and_description").notEmpty().withMessage("pose_description is required"),
+  body("pose_and_description").notEmpty().withMessage("pose_and_description is required"),
 
-  body("precaution").notEmpty().withMessage("Precaution is required"),
-  body("method_of_performing").notEmpty().withMessage("Method Of Performing is required"),
+  body("precaution").notEmpty().withMessage("precaution is required"),
+  body("method_of_performing").notEmpty().withMessage("method_of_performing is required"),
 
 
 ]);

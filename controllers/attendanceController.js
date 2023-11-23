@@ -8,7 +8,7 @@ exports.Attend = async(req, res)=>{
   const userId = req.params.id
 
   const currentDate = getTodayDate();
-  const attended = await Attendance.create({ attendance_date:currentDate, is_present:req.body.is_present, userId:userId})
+
  const isExist =  Attendance.findOne({
     where: {   attendance_date: currentDate },
   });
@@ -16,7 +16,7 @@ exports.Attend = async(req, res)=>{
     return "already Attended Today"
   }
  
-  
+  const attended = await Attendance.create({ attendance_date:currentDate, is_present:req.body.is_present, userId:userId})
   return  res.json(attended)
 }
 exports.setAttendance = async (req, res)=>{
