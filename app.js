@@ -31,6 +31,7 @@ const reportRoute = require("./routes/reportRoute")
 const popUpROute = require("./routes/popUp")
 const attendanceRoute = require("./routes/attendanceRoute")
 const missionRoute = require("./routes/missionRoute")
+const rewardRoute = require("./routes/reward")
 const inquiryRoute = require("./routes/InquiryRoute")
 
 
@@ -47,6 +48,7 @@ app.use("/attend/", attendanceRoute)
 app.use("/popup/", popUpROute)
 app.use("/mission/", missionRoute)
 app.use("/inquiry/", inquiryRoute)
+app.use("/reward",rewardRoute)
 
 //404 middleware
 app.use("*", (req, res, next) => {

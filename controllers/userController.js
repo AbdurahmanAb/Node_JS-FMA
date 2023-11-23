@@ -51,7 +51,6 @@ console.log("uid = ", uid)
     const missionExists = Mission.findOne({where:{id:mid}})/* Check if mission with mid exists */;
 
     if (!userExists || !missionExists) {
-      return res.status(404).json({ error: 'User or Mission not found' });
     }
 
     const enrollment = await UserMission.create({

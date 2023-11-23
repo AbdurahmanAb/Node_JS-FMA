@@ -3,6 +3,6 @@ const { getTotalReward } = require("../controllers/rewardController");
 
 const router = express.Router()
 
-router.get("/", getTotalReward)
+router.get("/:id/:mid", getTotalReward)
 
 module.exports = router;
